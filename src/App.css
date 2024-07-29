@@ -1,0 +1,195 @@
+:root {
+  --main-blue: #2f7df2e6;
+  --light-blue: #e6f0fd;
+  --dark-blue: #1e5bb8;
+  --gray: #f8f9fa;
+  --dark-gray: #495057;
+  --light-gray: #e9ecef;
+  --white: #ffffff;
+}
+
+body {
+  background-color: var(--gray);
+  color: var(--dark-gray);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 100%;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--light-gray);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--main-blue);
+  font-size: 2.5rem;
+}
+
+.current-round {
+  font-size: 1.2rem;
+  color: var(--dark-gray);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--main-blue);
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--main-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.button:hover {
+  background-color: var(--dark-blue);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.cell, .header-cell {
+  border: 1px solid var(--light-gray);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.header-cell {
+  background-color: var(--light-blue);
+  font-weight: 600;
+  color: var(--main-blue);
+}
+
+.center {
+  text-align: center;
+}
+
+.result-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--main-blue);
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 0.5rem;
+}
+
+.member-result {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--light-gray);
+  padding: 1.5rem;
+  border-radius: 4px;
+  background-color: var(--white);
+}
+
+.member-result h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--main-blue);
+}
+
+.member-result ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.delete-button {
+  background-color: transparent;
+  border: none;
+  color: var(--dark-gray);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.delete-button:hover {
+  color: var(--main-blue);
+}
+
+.header-content, .member-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.all-rounds-results {
+  margin-top: 3rem;
+  border-top: 1px solid var(--light-gray);
+  padding-top: 2rem;
+}
+
+.round-result {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--white);
+  border-radius: 4px;
+  border: 1px solid var(--light-gray);
+}
+
+.total-sum-result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--light-blue);
+  border-radius: 4px;
+  border: 1px solid var(--main-blue);
+}
+
+.total-sum-result h3 {
+  color: var(--main-blue);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    margin: 2rem auto;
+  }
+
+  .button {
+    width: auto;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .button + .button {
+    margin-left: 1rem;
+  }
+}
