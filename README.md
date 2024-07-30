@@ -41,6 +41,7 @@
 
 프로젝트 링크: [https://github.com/JJJiL0ng/JJJiL0ng.github.io](https://github.com/JJJiL0ng/JJJiL0ng.github.io)
 
+호스팅 레포지토리: https://github.com/JJJiL0ng/JJJiL0ng.github.io.git
 ---
 
 ⭐️ 이 프로젝트가 마음에 드신다면 GitHub 스타를 눌러주세요!
