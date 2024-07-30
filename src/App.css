@@ -26,11 +26,24 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 1rem;
+}
+
 .title {
   text-align: center;
-  margin-bottom: 1.5rem;
   color: var(--main-blue);
   font-size: 2.5rem;
+  margin: 0;
 }
 
 .current-round {
@@ -218,7 +231,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Styles for clickable cells */
 .cell.center {
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -235,4 +247,24 @@ body {
 
 .cell.center.checked:hover {
   background-color: #45a049;
+}
+
+.calculate-button {
+  width: 100%;
+  background-color: var(--dark-blue);
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .half-width {
+    width: 100%;
+  }
 }
