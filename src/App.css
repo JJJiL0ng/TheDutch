@@ -6,25 +6,29 @@
   --dark-gray: #495057;
   --light-gray: #e9ecef;
   --white: #ffffff;
+  --check-color: #4caf50;
 }
 
 body {
   background-color: var(--gray);
   color: var(--dark-gray);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
 }
 
 .container {
-  max-width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
   padding: 2rem;
   background-color: var(--white);
   border-radius: 8px;
   border: 1px solid var(--light-gray);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .title {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--main-blue);
   font-size: 2.5rem;
 }
@@ -32,14 +36,19 @@ body {
 .current-round {
   font-size: 1.2rem;
   color: var(--dark-gray);
-  margin-bottom: 1.5rem;
-  text-align: center;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .input {
-  width: 100%;
   padding: 0.75rem;
-  margin-bottom: 1rem;
   border: 1px solid var(--light-gray);
   border-radius: 4px;
   font-size: 1rem;
@@ -51,15 +60,26 @@ body {
   border-color: var(--main-blue);
 }
 
-.button {
+.input-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.full-width {
   width: 100%;
+}
+
+.half-width {
+  width: calc(50% - 0.5rem);
+}
+
+.button {
   padding: 0.75rem;
   background-color: var(--main-blue);
   color: var(--white);
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-bottom: 1rem;
   font-size: 1rem;
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.1s ease;
@@ -80,11 +100,12 @@ body {
 
 .table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin-bottom: 1rem;
 }
 
-.cell, .header-cell {
+.cell, .header-cell, .corner-header {
   border: 1px solid var(--light-gray);
   padding: 0.75rem;
   text-align: left;
@@ -96,19 +117,38 @@ body {
   color: var(--main-blue);
 }
 
+.corner-header {
+  position: relative;
+  width: 120px;
+  height: 60px;
+  background-color: var(--light-blue);
+  font-weight: 600;
+  color: var(--main-blue);
+}
+
+.corner-header span {
+  position: absolute;
+  font-size: 0.9rem;
+}
+
+.corner-header .participant {
+  bottom: 5px;
+  left: 5px;
+}
+
+.corner-header .menu {
+  top: 5px;
+  right: 5px;
+}
+
 .center {
   text-align: center;
 }
 
 .result-title {
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1rem;
   color: var(--main-blue);
-}
-
-input[type="checkbox"] {
-  transform: scale(1.2);
-  margin-right: 0.5rem;
 }
 
 .member-result {
@@ -151,7 +191,7 @@ input[type="checkbox"] {
 }
 
 .all-rounds-results {
-  margin-top: 3rem;
+  margin-top: 2rem;
   border-top: 1px solid var(--light-gray);
   padding-top: 2rem;
 }
@@ -178,18 +218,21 @@ input[type="checkbox"] {
   margin-bottom: 1rem;
 }
 
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    margin: 2rem auto;
-  }
+/* Styles for clickable cells */
+.cell.center {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .button {
-    width: auto;
-    padding: 0.75rem 1.5rem;
-  }
+.cell.center:hover {
+  background-color: var(--light-blue);
+}
 
-  .button + .button {
-    margin-left: 1rem;
-  }
+.cell.center.checked {
+  background-color: var(--check-color);
+  color: var(--white);
+}
+
+.cell.center.checked:hover {
+  background-color: #45a049;
 }

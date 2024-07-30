@@ -49,7 +49,17 @@ const DutchPayCalculator = () => {
     }
   };
 
-  const calculateDutchPay = () => {
+  const handlePriceChange = (e) => {
+    const value = parseInt(e.target.value);
+    setNewColumnPrice(isNaN(value) ? '' : value.toString());
+  };
+
+  const calculateAndStartNewRound = () => {
+    if (rows.length === 0 || headers.length === 0) {
+      alert('참여자와 메뉴를 먼저 추가해주세요.');
+      return;
+    }
+
     const newRows = rows.map(row => ({ ...row, total: 0 }));
     const newDetailedResults = rows.map(row => ({ name: row.name, items: [] }));
 
@@ -75,7 +85,6 @@ const DutchPayCalculator = () => {
     setDetailedResults(newDetailedResults);
     setCalculated(true);
 
-    // 새로운 라운드 저장
     const newRound = {
       roundNumber: currentRound,
       headers: [...headers],
@@ -84,7 +93,14 @@ const DutchPayCalculator = () => {
       detailedResults: newDetailedResults
     };
     setRounds([...rounds, newRound]);
-    setTotalSum(null); // 새 라운드가 추가되면 총합 초기화
+
+    setHeaders([]);
+    setRows(rows.map(row => ({ ...row, checks: [], total: 0 })));
+    setPrices({});
+    setCalculated(false);
+    setDetailedResults([]);
+    setCurrentRound(currentRound + 1);
+    setTotalSum(null);
   };
 
   const deleteRow = (index) => {
@@ -112,15 +128,6 @@ const DutchPayCalculator = () => {
     setCalculated(false);
   };
 
-  const startNewRound = () => {
-    setHeaders([]);
-    setRows(rows.map(row => ({ ...row, checks: [], total: 0 })));
-    setPrices({});
-    setCalculated(false);
-    setDetailedResults([]);
-    setCurrentRound(currentRound + 1);
-  };
-
   const calculateTotalSum = () => {
     const totalSumByPerson = {};
     
@@ -141,38 +148,48 @@ const DutchPayCalculator = () => {
     <div className="container">
       <h2 className="title">The Dutch</h2>
       <p className="current-round">현재 차수: {currentRound}차</p>
-      <input
-        className="input"
-        value={newRowValue}
-        onChange={(e) => setNewRowValue(e.target.value)}
-        onKeyPress={(e) => handleKeyPress(e, addRow)}
-        placeholder="새 참여자 이름"
-      />
-      <button className="button" onClick={addRow}>참여자 추가</button>
-      <input
-        className="input"
-        value={newColumnMenu}
-        onChange={(e) => setNewColumnMenu(e.target.value)}
-        placeholder="새 메뉴 이름"
-      />
-      <input
-        className="input"
-        value={newColumnPrice}
-        onChange={(e) => setNewColumnPrice(e.target.value)}
-        onKeyPress={(e) => handleKeyPress(e, addColumn)}
-        placeholder="메뉴 가격"
-      />
-      <button className="button" onClick={addColumn}>메뉴 추가</button>
+      <div className="input-section">
+        <input
+          className="input full-width"
+          value={newRowValue}
+          onChange={(e) => setNewRowValue(e.target.value)}
+          onKeyPress={(e) => handleKeyPress(e, addRow)}
+          placeholder="새 참여자 이름"
+        />
+        <button className="button full-width" onClick={addRow}>참여자 추가</button>
+        <div className="input-group">
+          <input
+            className="input half-width"
+            value={newColumnMenu}
+            onChange={(e) => setNewColumnMenu(e.target.value)}
+            placeholder="새 메뉴 이름"
+          />
+          <input
+            className="input half-width"
+            value={newColumnPrice}
+            onChange={handlePriceChange}
+            onKeyPress={(e) => handleKeyPress(e, addColumn)}
+            placeholder="메뉴 가격"
+            type="number"
+            min="0"
+            step="1000"
+          />
+        </div>
+        <button className="button full-width" onClick={addColumn}>메뉴 추가</button>
+      </div>
       <div className="table-container">
         <table className="table">
           <thead>
             <tr>
-              <th className="header-cell">참여자/메뉴</th>
+              <th className="corner-header">
+                <span className="participant">참여자</span>
+                <span className="menu">메뉴</span>
+              </th>
               {headers.map((header, index) => (
                 <th key={index} className="header-cell">
                   <div className="header-content">
                     <span>{header}<br />{`(${prices[header]}원)`}</span>
-                    <button className="delete-button menu-delete" onClick={() => deleteColumn(index)}>X</button>
+                    <button className="delete-button" onClick={() => deleteColumn(index)}>×</button>
                   </div>
                 </th>
               ))}
@@ -184,16 +201,16 @@ const DutchPayCalculator = () => {
                 <td className="cell">
                   <div className="member-cell">
                     <span>{row.name}</span>
-                    <button className="delete-button member-delete" onClick={() => deleteRow(rowIndex)}>X</button>
+                    <button className="delete-button" onClick={() => deleteRow(rowIndex)}>×</button>
                   </div>
                 </td>
                 {row.checks.map((checked, colIndex) => (
-                  <td key={colIndex} className="cell center">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => toggleCheck(rowIndex, colIndex)}
-                    />
+                  <td 
+                    key={colIndex} 
+                    className={`cell center ${checked ? 'checked' : ''}`}
+                    onClick={() => toggleCheck(rowIndex, colIndex)}
+                  >
+                    {checked ? '✓' : ''}
                   </td>
                 ))}
               </tr>
@@ -201,12 +218,7 @@ const DutchPayCalculator = () => {
           </tbody>
         </table>
       </div>
-      {rows.length > 0 && headers.length > 0 && (
-        <div>
-          <button className="button calculate-button" onClick={calculateDutchPay}>계산</button>
-          <button className="button new-round-button" onClick={startNewRound}>다음 차수 시작</button>
-        </div>
-      )}
+      <button className="button full-width" onClick={calculateAndStartNewRound}>계산 및 다음 차수 시작</button>
       {calculated && (
         <div className="result">
           <h3 className="result-title">{currentRound - 1}차 계산 결과:</h3>
@@ -236,7 +248,7 @@ const DutchPayCalculator = () => {
         ))}
       </div>
       
-      <button className="button total-sum-button" onClick={calculateTotalSum}>전체 차수 결과 총합 계산</button>
+      <button className="button full-width" onClick={calculateTotalSum}>전체 차수 결과 총합 계산</button>
       
       {totalSum && (
         <div className="total-sum-result">
