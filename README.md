@@ -1,75 +1,46 @@
-<<<<<<< HEAD
-# TheDutch
-the dutch 
-=======
-# Getting Started with Create React App
+# 더 더치 (The Dutch) 🧾💸
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+> 세상에 없던 새로운 더치페이 계산기
 
-In the project directory, you can run:
+## 📖 소개
 
-### `npm start`
+"더 더치"는 기존의 더치페이 계산기와는 다른, 혁신적이고 사용자 친화적인 솔루션입니다. 복잡한 그룹 경비 정산을 간편하고 정확하게 처리할 수 있도록 도와줍니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🌐 [더 더치 웹사이트 방문하기](https://thedutch.site/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ 주요 기능
 
-### `npm test`
+- 🧮 정확한 더치페이 계산
+- 👥 다수의 참여자 지원
+- 📊 시각적 결과 표현
+- 📱 모바일 친화적 디자인
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 시작하기
 
-### `npm run build`
+1. [더 더치 웹사이트](https://thedutch.site/)에 접속합니다.
+2. 그룹 이름을 입력하고 참여자를 추가합니다.
+3. 각 지출 항목과 금액을 입력합니다.
+4. "계산하기" 버튼을 클릭하여 결과를 확인합니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠 기술 스택
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Frontend: react
+- Backend: express.js nest.js 사용예정
+- 호스팅: GitHub Pages
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 👨‍💻 개발자
 
-### `npm run eject`
+- [@JJJiL0ng](https://github.com/JJJiL0ng)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📞 연락처
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- jihong9412@gmail.com
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+프로젝트 관리자 - [@JJJiL0ng](https://github.com/JJJiL0ng)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+프로젝트 링크: [https://github.com/JJJiL0ng/JJJiL0ng.github.io](https://github.com/JJJiL0ng/JJJiL0ng.github.io)
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 75b0e95 (inintial)
+⭐️ 이 프로젝트가 마음에 드신다면 GitHub 스타를 눌러주세요!
