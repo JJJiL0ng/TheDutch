@@ -4,14 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// 성능 메트릭을 콘솔에 기록하는 함수
+const logPerformance = (metric) => {
+  console.log(metric.name, metric.value);
+  // 여기에 성능 메트릭을 분석 서비스로 보내는 로직을 추가할 수 있습니다.
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// 루트 요소 가져오기
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+
+  // 웹 바이탈 측정 및 보고
+  reportWebVitals(logPerformance);
+} else {
+  console.error('루트 요소를 찾을 수 없습니다. index.html 파일을 확인해주세요.');
+}

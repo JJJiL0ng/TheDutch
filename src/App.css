@@ -7,23 +7,30 @@
   --light-gray: #e9ecef;
   --white: #ffffff;
   --check-color: #4caf50;
+
+  --font-primary: 'Noto Sans KR', sans-serif;
+  --font-secondary: 'Roboto', sans-serif;
 }
 
 body {
   background-color: var(--gray);
   color: var(--dark-gray);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-primary);
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
   max-width: 800px;
+  width: 100%;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 1rem;
   background-color: var(--white);
   border-radius: 8px;
   border: 1px solid var(--light-gray);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .header {
@@ -44,6 +51,8 @@ body {
   color: var(--main-blue);
   font-size: 2.5rem;
   margin: 0;
+  font-family: var(--font-secondary);
+  font-weight: 700;
 }
 
 .current-round {
@@ -66,6 +75,8 @@ body {
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input:focus {
@@ -76,6 +87,7 @@ body {
 .input-group {
   display: flex;
   gap: 1rem;
+  width: 100%;
 }
 
 .full-width {
@@ -96,6 +108,7 @@ body {
   font-size: 1rem;
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.1s ease;
+  width: 100%;
 }
 
 .button:hover {
@@ -233,7 +246,8 @@ body {
 
 .cell.center {
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .cell.center:hover {
@@ -255,34 +269,145 @@ body {
   margin-top: 1rem;
 }
 
+.price-input-group {
+  display: flex;
+  width: calc(50% - 0.5rem);
+}
+
+.price-input {
+  flex-grow: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.price-adjust-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-adjust-button {
+  background-color: var(--main-blue);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.price-adjust-button:first-child {
+  border-top-right-radius: 4px;
+}
+
+.price-adjust-button:last-child {
+  border-bottom-right-radius: 4px;
+}
+
+.price-adjust-button:hover {
+  background-color: var(--dark-blue);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
+    margin: 1rem auto;
   }
 
   .input-group {
     flex-direction: column;
   }
 
-  .half-width {
+  .half-width, .price-input-group {
     width: 100%;
   }
+
+  .input, .button {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
 }
-@keyframes blink {
-  0% { background-color: var(--light-blue); }
-  50% { background-color: var(--white); }
-  100% { background-color: var(--light-blue); }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .cell.center:not(.checked) {
-  animation: blink 2s infinite;
+  animation: none;
 }
 
-.cell.center:hover {
-  animation: none;
-  background-color: var(--light-blue);
+.circle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--light-gray);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
 }
 
-.cell.center.checked {
-  animation: none;
+.cell.center:hover .circle {
+  border-color: var(--main-blue);
+}
+
+.cell.center.checked .circle {
+  display: none;
+}
+
+.round-result {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--white);
+  border-radius: 4px;
+  border: 1px solid var(--light-gray);
+}
+
+.round-result h4 {
+  color: var(--main-blue);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.round-member-result {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--light-blue);
+}
+
+.round-member-result p {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.round-member-result ul {
+  list-style-type: none;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.round-member-result li {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--dark-gray);
 }
