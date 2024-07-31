@@ -268,3 +268,21 @@ body {
     width: 100%;
   }
 }
+@keyframes blink {
+  0% { background-color: var(--light-blue); }
+  50% { background-color: var(--white); }
+  100% { background-color: var(--light-blue); }
+}
+
+.cell.center:not(.checked) {
+  animation: blink 2s infinite;
+}
+
+.cell.center:hover {
+  animation: none;
+  background-color: var(--light-blue);
+}
+
+.cell.center.checked {
+  animation: none;
+}

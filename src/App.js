@@ -40,8 +40,14 @@ const DutchPayCalculator = () => {
     newRows[rowIndex].checks[colIndex] = !newRows[rowIndex].checks[colIndex];
     setRows(newRows);
     setCalculated(false);
+  
+    // 애니메이션 재시작을 위해 클래스를 잠시 제거했다가 다시 추가
+    const cell = document.querySelector(`table tr:nth-child(${rowIndex + 1}) td:nth-child(${colIndex + 2})`);
+    if (cell) {
+      cell.classList.remove('center');
+      setTimeout(() => cell.classList.add('center'), 10);
+    }
   };
-
   const handleKeyPress = (e, action) => {
     if (e.key === 'Enter') {
       e.preventDefault();
